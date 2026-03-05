@@ -1,53 +1,76 @@
 # SMS / MMS Backup Viewer 📱💬
 
-Una herramienta ultrarrápida y eficiente escrita en **Go** para convertir copias de seguridad gigantescas de SMS, MMS y Registro de Llamadas (en formato XML) en una atractiva interfaz web local (HTML/CSS) estilo WhatsApp/iMessage.
+An ultra-fast and efficient tool written in **Go** to convert massive SMS, MMS, and Call Log backups (in XML format) into a beautiful local web interface (HTML/CSS) styled like WhatsApp or iMessage.
 
-Desarrollada para procesar archivos masivos (probado con copias de seguridad de más de 5GB) sin colapsar la memoria RAM de tu ordenador.
+Developed to process massive files (tested with backups over 5GB) without crashing your computer's RAM.
 
-## ✨ Características
+## ✨ Features
 
-- **Análisis por Flujos (Stream Parsing):** Lee el archivo XML secuencialmente. Olvídate de los errores de *Out of Memory*.
-- **Extracción de Multimedia:** Detecta e interpreta código Base64 incrustado en los MMS extrayendo imágenes, vídeos y audios directamente a una carpeta local.
-- **Limpieza Inteligente:** Elimina automáticamente basura técnica de los mensajes (como etiquetas `<smil>`, tabuladores o espacios vacíos extremos).
-- **Interfaz UI/UX Responsiva:** Genera archivos HTML estáticos con un diseño tipo chat moderno.
-- **Modo Oscuro/Claro Automático:** El diseño respeta la configuración de tema de tu sistema operativo.
-- **Privacidad Total:** Todo se ejecuta en local. Tus mensajes no se suben a ningún servidor.
+- **Stream Parsing:** Reads the XML file sequentially. Forget about *Out of Memory* errors.
+- **Multimedia Extraction:** Detects and interprets Base64 code embedded in MMS, extracting images, videos, and audio directly to a local folder.
+- **Smart Cleaning:** Automatically removes technical junk from messages (such as `<smil>` tags, tabs, or extreme empty spaces).
+- **Responsive UI/UX:** Generates static HTML files with a modern chat design.
+- **Auto Dark/Light Mode:** The design automatically respects your operating system's theme settings.
+- **Total Privacy:** Everything runs locally. Your messages are never uploaded to any server.
 
-## 🚀 Requisitos previos
+---
 
-- Tener instalado [Go (Golang)](https://go.dev/dl/).
+## 🚀 Getting Started (Quick Download)
 
-## 🛠️ Instalación y Uso
+You don't need to install Go or know how to code to use this tool.
 
-1. Clona este repositorio en tu ordenador:
+1. Go to the **[Releases](https://github.com/soyunomas/sms-mms-backup-viewer/releases)** section of this repository.
+2. Download the `.zip` file for your operating system (Windows, macOS, or Linux).
+3. Extract the file to a folder on your computer.
+4. Place your backup file (e.g., `backup.xml`) in that same folder.
+5. Open a terminal or command prompt in that folder and run:
+   - **Windows:** `sms-viewer.exe backup.xml`
+   - **macOS / Linux:** `./sms-viewer backup.xml`
+6. Once finished, open the `Output_Web/index.html` file with your favorite web browser.
+
+---
+
+## 🛠️ Developer Installation
+
+If you prefer to run it from source or compile it yourself:
+
+### Prerequisites
+- [Go (Golang)](https://go.dev/dl/) installed.
+- (Optional) `make` to use the provided Makefile.
+
+### Steps
+1. Clone the repository:
    ```bash
    git clone https://github.com/soyunomas/sms-mms-backup-viewer.git
    cd sms-mms-backup-viewer
    ```
 
-2. Coloca tu archivo de copia de seguridad (ej. `backup.xml`) en la misma carpeta.
-
-3. Ejecuta el script pasándole el nombre de tu archivo como argumento:
+2. Run directly:
    ```bash
    go run main.go backup.xml
    ```
 
-4. **¡Espera!** Si tu archivo es de varios Gigabytes, el proceso tomará un tiempo. Podrás ver el progreso en la consola.
-5. Al finalizar, abre el archivo `Output_Web/index.html` con tu navegador web favorito.
+3. Or compile using the Makefile:
+   ```bash
+   make help      # View build options
+   make all-zip   # Generate all compressed binaries in /dist
+   ```
 
-## 📁 Estructura de salida
+---
 
-Al terminar la ejecución, la aplicación creará una carpeta llamada `Output_Web` con esta estructura:
+## 📁 Output Structure
+
+Upon completion, the application will create a folder named `Output_Web` with the following structure:
 
 ```text
 Output_Web/
- ├── index.html       # Índice principal con todos tus contactos
- ├── chats/           # Carpeta con las conversaciones individuales (.html)
- └── media/           # Carpeta con todas las fotos, audios y vídeos extraídos
+ ├── index.html       # Main index with all your contacts
+ ├── chats/           # Folder containing individual conversations (.html)
+ └── media/           # Folder containing all extracted photos, audio, and videos
 ```
 
-## 📝 Licencia
+## 📝 License
 
-Este proyecto está bajo la Licencia MIT 
+This project is licensed under the MIT License. Feel free to use, modify, and share it.
 
 
